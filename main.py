@@ -86,6 +86,7 @@ def main():
                 if active:
                     if event.key == pg.K_RETURN:
                         print(text)
+                        print(text)
                         text = ''
                     elif event.key == pg.K_BACKSPACE:
                         text = text[:-1]
