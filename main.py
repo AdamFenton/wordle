@@ -1,5 +1,6 @@
 import pygame as pg
 import numpy as np
+import sys
 WIDTH,HEIGHT = (500,800)
 PADLEFTRIGHT = 10
 PADTOP = 10
@@ -56,6 +57,17 @@ def guess(guess_count,guess_string):
     WIN.blit(letters[3],positions[3])
     WIN.blit(letters[4],positions[4])
 
+def test_function(guess_count,text):
+    letters = get_guess_letters_for_printing(text)
+    positions = get_letter_positions(guess_count)
+    WIN.blit(letters[0],positions[0])
+
+    if guess_count > 5:
+        sys.exit()
+    print(guess_count)
+
+
+
 
 
 def main():
@@ -85,7 +97,9 @@ def main():
             if event.type == pg.KEYDOWN:
                 if active:
                     if event.key == pg.K_RETURN:
-                        print(text)
+                        guess_count += 1
+                        test_function(guess_count,text)
+                        
                         text = ''
                     elif event.key == pg.K_BACKSPACE:
                         text = text[:-1]
